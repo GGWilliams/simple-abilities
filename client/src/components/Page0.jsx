@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Page0.css";
+import Card from "./Card";
 
 const axios = require("axios");
 
@@ -30,10 +31,23 @@ function Page0(){
 
 
 	return <div className="container">
-		<img src={image} alt=""  />
-		<h1>{summonerIconCode}</h1>
-
-		<button onClick={getImage}>Change Image</button>
+		<div class="row justify-content-center">
+			<div class="col-xxl-4 col-lg-4 col-md-6 col-sm-6 col-9">
+				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
+			</div>
+			<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9">
+				<Card championName="Azir" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png"/>
+			</div>
+			<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9">
+				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
+			</div>
+			<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9">
+				<Card championName="Azir" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png"/>
+			</div>
+			<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9">
+				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
+			</div>
+		</div>
 	</div>
 }
 export default Page0;
