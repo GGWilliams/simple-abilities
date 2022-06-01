@@ -21,9 +21,9 @@ if (process.env.NODE_ENV === "production") {
 
 
 
-app.get("/participants", (req, res) => {
-
-  axios.get("https://na1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/Anj-JuLC1iXuvjX54jP8KKw6hW0EIyTZZNZiB4tL2NgMVwI?api_key=" + process.env.TOP_SECRET_API_KEY)
+app.get("/summonerName/:summonerName", (req, res) => {
+  const searchText = req.params.summonerName;
+  axios.get("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + searchText + "?api_key=" + process.env.TOP_SECRET_API_KEY)
   .then(function (response) {
     res.json(response.data);
     console.log(response.data);
@@ -35,6 +35,7 @@ app.get("/participants", (req, res) => {
   .then(function () {
     // always executed
   });
+
 })
 
 

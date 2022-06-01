@@ -60,8 +60,3 @@ function Card(props) {
     </div>
 }
 export default Card;
-
-//style={{textAlign: "center"}}
-// <h2>{props.championName}</h2>
-// <img src={props.img}/>
-// <h5>Summoner Name</h5>
