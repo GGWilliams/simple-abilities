@@ -1,4 +1,13 @@
-.summonerImage {
-  height: 150px;
-  width: 150px;
+
+
+.input-group {
+  padding: 30px 10% 0px 10%
+}
+
+.row {
+  height: 300px;
+}
+
+.rowChild {
+  height: 100%
 }
