@@ -38,6 +38,24 @@ app.get("/summonerName/:summonerName", (req, res) => {
 
 })
 
+app.get("/by-summoner/:encryptedSummonerId", (req, res) => {
+  const encryptedSummonerId = req.params.encryptedSummonerId;
+  axios.get("https://na1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + encryptedSummonerId + "?api_key=" + process.env.TOP_SECRET_API_KEY)
+  .then(function (responseById) {
+    res.json(responseById.data);
+    console.log("We just sent the res.json");
+    console.log(responseById.data);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+})
+
 
 
 

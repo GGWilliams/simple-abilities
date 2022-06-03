@@ -7,11 +7,43 @@ const axios = require("axios");
 
 function Page0(){
 
+	const championDataArrayOfObjects = [];
+
+	function championDataFromKey(entry){
+		axios.get("http://ddragon.leagueoflegends.com/cdn/12.10.1/data/en_US/champion.json")
+	  .then(function (response) {
+	    let entries = Object.entries(response.data.data)
+
+			entries.forEach(array => {
+				championDataArrayOfObjects.push(array[1]);
+			})
+			let key = entry.toString();
+			let obj = championDataArrayOfObjects.find(o => o.key === key);
+			console.log(obj.name);
+
+
+	  })
+	  .catch(function (error) {
+	    // handle error
+	    console.log(error);
+	  })
+	  .then(function () {
+	    // always executed
+	  });
+	}
+
+
+
+
+
+
 	const [searchText, setSearchText] = useState("");
-	console.log(searchText);
+
 
 	const [image, setImage] = useState("https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png");
 	const [summonerIconCode, setSummonerIconCode] = useState("testing");
+	const [participant0ChampionId, setParticipant0ChampionId] = useState("0");
+	const [championImage, setChampionImage] = useState("");
 
 	const getImage = () => {
 
@@ -24,7 +56,30 @@ function Page0(){
 		axios.get("http://localhost:3001/summonerName/" + searchText)
 		.then(function (response) {
 
-			console.log(response.data.summonerLevel);
+			console.log("Id: " + response.data.id + " retrieved.");
+										axios.get("http://localhost:3001/by-summoner/" + response.data.id)
+										.then(function (responseById) {
+
+											console.log(responseById.data);
+
+											setParticipant0ChampionId(responseById.data.participants[0].championId );
+
+
+											var championKey = responseById.data.participants[0].championId;
+											
+											championDataFromKey(championKey);
+
+
+
+
+										})
+										.catch(function (error) {
+											// handle error
+											console.log(error);
+										})
+										.then(function () {
+
+										});
 
 		})
 		.catch(function (error) {
@@ -62,19 +117,19 @@ function Page0(){
 
 
 		<div class="row justify-content-center">
-			<div class="gy-3 col-xxl-4 col-lg-4 col-md-6 col-sm-6 col-9 rowChild">
-				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
+			<div class="gy-3 col-xxl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<Card championName={participant0ChampionId} img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
 			</div>
-			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9 rowChild">
+			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
 				<Card championName="Azir" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png"/>
 			</div>
-			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9 rowChild">
+			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
 				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
 			</div>
-			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9 rowChild">
+			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
 				<Card championName="Azir" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png"/>
 			</div>
-			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-9 rowChild">
+			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
 				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
 			</div>
 		</div>
