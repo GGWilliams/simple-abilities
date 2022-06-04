@@ -3,23 +3,48 @@ import ReactDOM from "react-dom";
 import "./Page0.css";
 import Card from "./Card";
 
+
 const axios = require("axios");
 
 function Page0(){
 
-	const championDataArrayOfObjects = [];
+	const [searchText, setSearchText] = useState("");
+	const [image, setImage] = useState("https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png");
+	const [summonerIconCode, setSummonerIconCode] = useState("testing");
+	const [participant0ChampionId, setParticipant0ChampionId] = useState("0");
+	const [championName, setChampionName] = useState("");
+	const championNamesArray = []; //non useState array for console.log reasons
+
+	var championKeysArray= []; //non useState array for console.log reasons
+	const [championNames, setChampionNames] = useState([]);
+	const [championKeys, setChampionKeys] = useState([]);
+
+
+
+
+
+
 
 	function championDataFromKey(entry){
-		axios.get("http://ddragon.leagueoflegends.com/cdn/12.10.1/data/en_US/champion.json")
+	  const championDataArrayOfObjects = [];
+	  axios.get("http://ddragon.leagueoflegends.com/cdn/12.10.1/data/en_US/champion.json")
 	  .then(function (response) {
 	    let entries = Object.entries(response.data.data)
 
-			entries.forEach(array => {
-				championDataArrayOfObjects.push(array[1]);
-			})
-			let key = entry.toString();
-			let obj = championDataArrayOfObjects.find(o => o.key === key);
-			console.log(obj.name);
+	    entries.forEach(array => {
+	      championDataArrayOfObjects.push(array[1]);
+	    })
+	    let key = entry.toString();
+	    let obj = championDataArrayOfObjects.find(o => o.key === key);
+
+			championNamesArray.push(obj.name);
+			setChampionNames(oldArray => [...oldArray, obj.name]);
+
+
+
+
+
+
 
 
 	  })
@@ -37,13 +62,6 @@ function Page0(){
 
 
 
-	const [searchText, setSearchText] = useState("");
-
-
-	const [image, setImage] = useState("https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png");
-	const [summonerIconCode, setSummonerIconCode] = useState("testing");
-	const [participant0ChampionId, setParticipant0ChampionId] = useState("0");
-	const [championImage, setChampionImage] = useState("");
 
 	const getImage = () => {
 
@@ -61,18 +79,27 @@ function Page0(){
 										.then(function (responseById) {
 
 											console.log(responseById.data);
+											setChampionNames([]);
+											setChampionKeys([]);
+											for(var i = 0; i <= 9; i++){
+												var championKey = responseById.data.participants[i].championId;
+												console.log(championKey);
+												championDataFromKey(championKey);
+												championKeysArray.push(championKey);
 
-											setParticipant0ChampionId(responseById.data.participants[0].championId );
+										}
+										console.log(championKeysArray);
+										console.log(championNamesArray);
+
+										setChampionKeys(championKeysArray);
 
 
-											var championKey = responseById.data.participants[0].championId;
-											
-											championDataFromKey(championKey);
 
 
 
 
-										})
+										}
+									)
 										.catch(function (error) {
 											// handle error
 											console.log(error);
@@ -87,9 +114,13 @@ function Page0(){
 			console.log(error);
 		})
 		.then(function () {
-			// always executed
+
 		});
 	}
+
+
+
+
 
 
 
@@ -107,17 +138,9 @@ function Page0(){
 
 
 
-
-
-
-
-
-
-
-
-
 		<div class="row justify-content-center">
 			<div class="gy-3 col-xxl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+			<h1>Testing: {championKeys[4]} {championNames[3]}</h1>
 				<Card championName={participant0ChampionId} img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
