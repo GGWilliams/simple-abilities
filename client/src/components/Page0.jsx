@@ -37,8 +37,8 @@ function Page0(){
 	    let key = entry.toString();
 	    let obj = championDataArrayOfObjects.find(o => o.key === key);
 
-			championNamesArray.push(obj.name);
-			setChampionNames(oldArray => [...oldArray, obj.name]);
+			championNamesArray.push("https://ddragon.leagueoflegends.com/cdn/12.10.1/img/champion/" + obj.name + ".png");
+			setChampionNames(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/" + obj.name + ".png"]);
 
 
 
@@ -98,6 +98,7 @@ function Page0(){
 
 
 
+
 										}
 									)
 										.catch(function (error) {
@@ -136,24 +137,22 @@ function Page0(){
 			<button onClick={event => searchForPlayer(event)} class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
 		</div>
 
-
-
 		<div class="row justify-content-center">
 			<div class="gy-3 col-xxl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-			<h1>Testing: {championKeys[4]} {championNames[3]}</h1>
-				<Card championName={participant0ChampionId} img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
+
+				<Card championName={participant0ChampionId} img={championNames[0]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Azir" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png"/>
+				<Card championName="Azir" img={championNames[1]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
+				<Card championName="Annie" img={championNames[2]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Azir" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Azir.png"/>
+				<Card championName="Azir" img={championNames[3]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Annie" img="https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Annie.png"/>
+				<Card championName="Annie" img={championNames[4]}/>
 			</div>
 		</div>
 	</div>
