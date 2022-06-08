@@ -16,7 +16,14 @@ function Page0(){
 	const championNamesArray = []; //non useState array for console.log reasons
 
 	var championKeysArray= []; //non useState array for console.log reasons
-	const [championNames, setChampionNames] = useState([]);
+
+	const [championImages, setChampionImages] = useState([]);
+	const [qImages, setQImages] =useState([]);
+	const [wImages, setWImages] =useState([]);
+	const [eImages, setEImages] =useState([]);
+	const [rImages, setRImages] =useState([]);
+	const [passiveImages, setPassiveImages] =useState([]);
+
 	const [championKeys, setChampionKeys] = useState([]);
 
 
@@ -37,8 +44,37 @@ function Page0(){
 	    let key = entry.toString();
 	    let obj = championDataArrayOfObjects.find(o => o.key === key);
 
-			championNamesArray.push("https://ddragon.leagueoflegends.com/cdn/12.10.1/img/champion/" + obj.name + ".png");
-			setChampionNames(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/" + obj.name + ".png"]);
+			championNamesArray.push(obj.name);
+
+					axios.get("https://ddragon.leagueoflegends.com/cdn/12.10.1/data/en_US/champion/" + obj.id + ".json") //obj.id is used because it is address friendly version of names like Kog 'Maw
+					.then(function (response) {
+						let champ = eval("response.data.data." + obj.id)
+						console.log(champ.spells[0].image.full);
+						setQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/" + champ.spells[0].image.full]);
+						setChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/" + obj.id + ".png"]);
+					})
+					.catch(function (error) {
+						// handle error
+						console.log(error);
+					})
+					.then(function () {
+						// always executed
+					});
+
+			// console.log(qName);
+
+
+
+
+
+
+			// setQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/" + qName]);
+			// setWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/" + wName]);
+			// setEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/" + eName]);
+			// setRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/" + rName]);
+			// setPassiveImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/" + passiveName]);
+
+			// here we will set the spell images just like the above. make useStates for them. and then make props for them.
 
 
 
@@ -79,7 +115,8 @@ function Page0(){
 										.then(function (responseById) {
 
 											console.log(responseById.data);
-											setChampionNames([]);
+											setChampionImages([]);
+											setQImages([]);
 											setChampionKeys([]);
 											for(var i = 0; i <= 9; i++){
 												var championKey = responseById.data.participants[i].championId;
@@ -140,19 +177,19 @@ function Page0(){
 		<div class="row justify-content-center">
 			<div class="gy-3 col-xxl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
 
-				<Card championName={participant0ChampionId} img={championNames[0]}/>
+				<Card championName={participant0ChampionId} championImage={championImages[0]} qImage={qImages[0]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Azir" img={championNames[1]}/>
+				<Card championName="Azir" championImage={championImages[1]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Annie" img={championNames[2]}/>
+				<Card championName="Annie" championImage={championImages[2]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Azir" img={championNames[3]}/>
+				<Card championName="Azir" championImage={championImages[3]}/>
 			</div>
 			<div class="gy-3 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
-				<Card championName="Annie" img={championNames[4]}/>
+				<Card championName="Annie" championImage={championImages[4]}/>
 			</div>
 		</div>
 	</div>
