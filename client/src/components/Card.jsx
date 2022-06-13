@@ -4,12 +4,12 @@ import "./Card.css";
 function Card(props) {
   return <div className="cardDiv">
 
-      <div className="passiveDiv">
+      <div className="allAbilityDivs passiveDiv">
         <div className="imgDiv">
           <img className="img" src={props.championImage}/>
         </div>
-        <div className="passiveTextDiv">
-          <p className="testing" >{props.championName} This text can be made smaller and the space between lines can be made thinner.</p>
+        <div className="allTextDivs passiveTextDiv">
+          <p className="allTextBackgrounds" > This text can be made smaller and the space between lines can be made thinner.</p>
         </div>
 
 
@@ -18,41 +18,41 @@ function Card(props) {
 
       </div>
 
-      <div className="qDiv">
+      <div className="allAbilityDivs qDiv">
         <div className="imgDiv">
           <img className="img" src={props.qImage}/>
         </div>
-        <div className="qTextDiv">
-          <p >testing</p>
+        <div className="allTextDivs qTextDiv">
+          <p className="allTextBackgrounds">testing</p>
         </div>
       </div>
 
-      <div className="wDiv">
+      <div className="allAbilityDivs wDiv">
         <div className="imgDiv">
-          <img className="img" src={props.championImage}/>
+          <img className="img" src={props.wImage}/>
         </div>
-        <div className="wTextDiv">
-          <p>Testing.</p>
-        </div>
-
-      </div>
-
-      <div className="eDiv">
-        <div className="imgDiv">
-          <img className="img" src={props.championImage}/>
-        </div>
-        <div className="eTextDiv">
-          <p>Testing.</p>
+        <div className="allTextDivs wTextDiv">
+          <p className="allTextBackgrounds">Testing.</p>
         </div>
 
       </div>
 
-      <div className="rDiv">
+      <div className="allAbilityDivs eDiv">
         <div className="imgDiv">
-          <img className="img" src={props.championImage}/>
+          <img className="img" src={props.eImage}/>
         </div>
-        <div className="rTextDiv">
-          <p>Testing.</p>
+        <div className="allTextDivs eTextDiv">
+          <p className="allTextBackgrounds">Testing.</p>
+        </div>
+
+      </div>
+
+      <div className="allAbilityDivs rDiv">
+        <div className="imgDiv">
+          <img className="img" src={props.rImage}/>
+        </div>
+        <div className="allTextDivs rTextDiv">
+          <p className="allTextBackgrounds">Testing.</p>
         </div>
 
       </div>

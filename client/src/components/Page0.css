@@ -11,3 +11,7 @@
 .rowChild {
   height: 100%
 }
+
+#liveAbilities {
+  display: none
+}
