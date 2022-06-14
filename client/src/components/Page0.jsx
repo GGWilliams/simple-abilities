@@ -176,7 +176,7 @@ function Page0(){
 
 
 
-	return <div className="container">
+	return <div className="container page0">
 
 
 
@@ -191,46 +191,50 @@ function Page0(){
 			<div class="row justify-content-center">
 
 
-				<div class="gy-5 col-xxl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[0]} qImage={qImages[0]} wImage={wImages[0]} eImage={eImages[0]} rImage={rImages[0]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[1]} qImage={qImages[1]} wImage={wImages[1]} eImage={eImages[1]} rImage={rImages[1]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[2]} qImage={qImages[2]} wImage={wImages[2]} eImage={eImages[2]} rImage={rImages[2]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[3]} qImage={qImages[3]} wImage={wImages[3]} eImage={eImages[3]} rImage={rImages[3]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[4]} qImage={qImages[4]} wImage={wImages[4]} eImage={eImages[4]} rImage={rImages[4]}/>
 				</div>
 
 			<div class="row justify-content-center">
 
-				<div class="gy-5 col-xxl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[5]} qImage={qImages[5]} wImage={wImages[5]} eImage={eImages[5]} rImage={rImages[5]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[6]} qImage={qImages[6]} wImage={wImages[6]} eImage={eImages[6]} rImage={rImages[6]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[7]} qImage={qImages[7]} wImage={wImages[7]} eImage={eImages[7]} rImage={rImages[7]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[8]} qImage={qImages[8]} wImage={wImages[8]} eImage={eImages[8]} rImage={rImages[8]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
 					<Card championImage={championImages[9]} qImage={qImages[9]} wImage={wImages[9]} eImage={eImages[9]} rImage={rImages[9]}/>
 				</div>
 			</div>
 
 
+
 			</div>
+
 		</div>
 
 
+
 	</div>
+
 }
 export default Page0;

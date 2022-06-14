@@ -1,5 +1,31 @@
+@font-face {
+  src: url(../fonts/Friz-Quadrata-Bold.otf);
+  font-family: frizBold;
+  }
+
+@font-face {
+    src: url(../fonts/Friz-Quadrata-Italic.ttf);
+    font-family: friz-italic;
+  }
+
+@font-face {
+      src: url(../fonts/Friz-Quadrata-Regular.ttf);
+      font-family: friz-regular;
+    }
+
+@font-face {
+        src: url(../fonts/Friz-Quadrata-Std-Medium.otf);
+        font-family: friz-medium;
+      }
+
+
+
+
+
+
+
 .cardDiv {
-  height: 100%;
+  height: 90%;
   padding: 0px;
   margin: 0px;
 }
@@ -79,7 +105,11 @@
   display: inline-block;
   vertical-align:top;
   padding: auto;
-  margin: 0px 7% 0px 7%;
+  margin: 3px 9% 0px 9%;
+  font-family: friz-medium;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #b19360;
 }
 
 .passiveTextDiv {
@@ -95,7 +125,8 @@
   display: inline-block;
   width: 75%;
   vertical-align: top;
-  background-color: grey;
+  background-color: black;
+  opacity: .7;
   height: 100%;
   border-radius: 33px;
 }
