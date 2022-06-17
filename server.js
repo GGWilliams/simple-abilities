@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.get("/summonerName/:summonerName", (req, res) => {
   const searchText = req.params.summonerName;
-  axios.get("https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + searchText + "?api_key=" + process.env.TOP_SECRET_API_KEY)
+  axios.get("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + searchText + "?api_key=" + process.env.TOP_SECRET_API_KEY)
   .then(function (response) {
     res.json(response.data);
     console.log(response.data);
@@ -40,7 +40,7 @@ app.get("/summonerName/:summonerName", (req, res) => {
 
 app.get("/by-summoner/:encryptedSummonerId", (req, res) => {
   const encryptedSummonerId = req.params.encryptedSummonerId;
-  axios.get("https://kr.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + encryptedSummonerId + "?api_key=" + process.env.TOP_SECRET_API_KEY)
+  axios.get("https://na1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + encryptedSummonerId + "?api_key=" + process.env.TOP_SECRET_API_KEY)
   .then(function (responseById) {
     res.json(responseById.data);
     console.log("We just sent the res.json");
@@ -48,6 +48,7 @@ app.get("/by-summoner/:encryptedSummonerId", (req, res) => {
   })
   .catch(function (error) {
     // handle error
+    res.send("No bueno.");
     console.log(error);
   })
   .then(function () {

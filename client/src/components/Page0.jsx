@@ -8,16 +8,32 @@ const axios = require("axios");
 
 function Page0(){
 
+	const [playerNameForErrorScreen, setPlayerNameForErrorScreen]= useState("That summoner ");
 	const [searchText, setSearchText] = useState("");
 	const [image, setImage] = useState("https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/Azir.png");
 	const [summonerIconCode, setSummonerIconCode] = useState("testing");
 	const [participant0ChampionId, setParticipant0ChampionId] = useState("0");
 	const [championName, setChampionName] = useState("");
-	const championNamesArray = []; //non useState array for console.log reasons
+	const championNamesArray = [];
+	const blueTeamNamesArray = [];
+	const redTeamNamesArray = []; //non useState array for console.log reasons
 
 	var championKeysArray= []; //non useState array for console.log reasons
 
-	const [championImages, setChampionImages] = useState([]);
+	const [redTeamChampionImages, setRedTeamChampionImages] = useState([]);
+	const [redTeamQImages, setRedTeamQImages] = useState([]);
+	const [redTeamWImages, setRedTeamWImages] = useState([]);
+	const [redTeamEImages, setRedTeamEImages] = useState([]);
+	const [redTeamRImages, setRedTeamRImages] = useState([]);
+
+	const [blueTeamChampionImages, setBlueTeamChampionImages] = useState([]);
+	const [blueTeamQImages, setBlueTeamQImages] = useState([]);
+	const [blueTeamWImages, setBlueTeamWImages] = useState([]);
+	const [blueTeamEImages, setBlueTeamEImages] = useState([]);
+	const [blueTeamRImages, setBlueTeamRImages] = useState([]);
+
+
+
 	const [qImages, setQImages] =useState([]);
 	const [wImages, setWImages] =useState([]);
 	const [eImages, setEImages] =useState([]);
@@ -32,7 +48,9 @@ function Page0(){
 
 
 
-	function championDataFromKey(entry){
+
+
+	function championDataFromKey(entry, championTeam){
 	  const championDataArrayOfObjects = [];
 	  axios.get("http://ddragon.leagueoflegends.com/cdn/12.11.1/data/en_US/champion.json")
 	  .then(function (response) {
@@ -44,18 +62,32 @@ function Page0(){
 	    let key = entry.toString();
 	    let obj = championDataArrayOfObjects.find(o => o.key === key);
 
+			if(championTeam === 100){
+				blueTeamNamesArray.push(obj.id);
+			}else{
+				redTeamNamesArray.push(obj.id);
+			}
 			championNamesArray.push(obj.name);
 
 					axios.get("https://ddragon.leagueoflegends.com/cdn/12.10.1/data/en_US/champion/" + obj.id + ".json") //obj.id is used because it is address friendly version of names like Kog 'Maw
 					.then(function (response) {
 						let champ = eval("response.data.data." + obj.id)
 						console.log(champ.spells[0].image.full);
-						setQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[0].image.full]);
-						setWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[1].image.full]);
-						setEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[2].image.full]);
-						setRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[3].image.full]);
 
-						setChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" + obj.id + ".png"]);
+						if(championTeam === 100){
+							setBlueTeamQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[0].image.full]);
+							setBlueTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[1].image.full]);
+							setBlueTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[2].image.full]);
+							setBlueTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[3].image.full]);
+							setBlueTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" + obj.id + ".png"]);
+						}else{
+							setRedTeamQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[0].image.full]);
+							setRedTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[1].image.full]);
+							setRedTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[2].image.full]);
+							setRedTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[3].image.full])
+							setRedTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" + obj.id + ".png"]);
+						}
+
 					})
 					.catch(function (error) {
 						// handle error
@@ -110,11 +142,14 @@ function Page0(){
 	}
 
 	function searchForPlayer(event){
-		document.getElementById("liveAbilities").style.display="inline";
+		document.getElementById("errorNotFound").style.display="none";
+		document.getElementById("liveAbilities").style.display="none";
+		document.getElementById("page0").style.height="3840px";
 
 
 
 		console.log("You searched for " + searchText);
+		setPlayerNameForErrorScreen(searchText);
 		axios.get("http://localhost:3001/summonerName/" + searchText)
 		.then(function (response) {
 
@@ -122,27 +157,44 @@ function Page0(){
 										axios.get("http://localhost:3001/by-summoner/" + response.data.id)
 										.then(function (responseById) {
 
-											console.log(responseById.data);
 
-											setChampionImages([]);
-											setQImages([]);
-											setWImages([]);
-											setEImages([]);
-											setRImages([]);
+											if(responseById.data === "No bueno."){
+												document.getElementById("errorNotFound").style.display="inline";
+												document.getElementById("liveAbilities").style.display="none";
+												document.getElementById("page0").style.height="3840px";
+											}else{
+												document.getElementById("errorNotFound").style.display="none";
+												document.getElementById("liveAbilities").style.display="inline";
+												document.getElementById("page0").style.height="auto";
 
-											setChampionKeys([]);
+												setBlueTeamChampionImages([]);
+												setRedTeamChampionImages([]);
+												setQImages([]);
+												setWImages([]);
+												setEImages([]);
+												setRImages([]);
 
-											for(var i = 0; i <= 9; i++){
-												var championKey = responseById.data.participants[i].championId;
-												console.log(championKey);
-												championDataFromKey(championKey);
-												championKeysArray.push(championKey);
+												setChampionKeys([]);
 
-										}
-										console.log(championKeysArray);
-										console.log(championNamesArray);
+												for(var i = 0; i <= 9; i++){
+													var championKey = responseById.data.participants[i].championId;
+													console.log(championKey);
+													var championTeam = responseById.data.participants[i].teamId;
+													championDataFromKey(championKey, championTeam);
+													championKeysArray.push(championKey);
 
-										setChampionKeys(championKeysArray);
+											}
+											console.log(championKeysArray);
+											console.log(championNamesArray);
+											console.log(blueTeamNamesArray);
+											console.log(redTeamNamesArray);
+
+											setChampionKeys(championKeysArray);
+											}
+
+
+
+
 
 
 
@@ -170,13 +222,23 @@ function Page0(){
 		});
 	}
 
+	function handleChange(e){
+		setSearchText(e.target.value)
+
+	}
+
+	function handleKeyPress(e){
+		if(e.key === "Enter"){
+			searchForPlayer();
+		}
+	}
 
 
 
 
 
 
-	return <div className="container page0">
+	return <div className="container g-0" id="page0">
 
 
 
@@ -184,50 +246,52 @@ function Page0(){
 
 
 		<div class="input-group mb-3">
-			<input onChange={e => setSearchText(e.target.value)} type="text" class="form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
-			<button onClick={event => searchForPlayer(event)} class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
+			<button onClick={event => searchForPlayer(event)} class="btn btn-light btn-outline-secondary" type="button" id="button-addon2">Search</button>
 		</div>
-		<div id="liveAbilities">
-			<div class="row justify-content-center">
+		<div id="errorNotFound">
+			<h1>{playerNameForErrorScreen} is not currently in a live game.</h1>
+		</div>
+		<div id="liveAbilities" class="g-0">
+			<div  class="row justify-content-center">
 
 
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[0]} qImage={qImages[0]} wImage={wImages[0]} eImage={eImages[0]} rImage={rImages[0]}/>
+				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={blueTeamChampionImages[0]} qImage={blueTeamQImages[0]} wImage={blueTeamWImages[0]} eImage={blueTeamEImages[0]} rImage={blueTeamRImages[0]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[1]} qImage={qImages[1]} wImage={wImages[1]} eImage={eImages[1]} rImage={rImages[1]}/>
+				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={blueTeamChampionImages[1]} qImage={blueTeamQImages[1]} wImage={blueTeamWImages[1]} eImage={blueTeamEImages[1]} rImage={blueTeamRImages[1]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[2]} qImage={qImages[2]} wImage={wImages[2]} eImage={eImages[2]} rImage={rImages[2]}/>
+				<div class=" col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={blueTeamChampionImages[2]} qImage={blueTeamQImages[2]} wImage={blueTeamWImages[2]} eImage={blueTeamEImages[2]} rImage={blueTeamRImages[2]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[3]} qImage={qImages[3]} wImage={wImages[3]} eImage={eImages[3]} rImage={rImages[3]}/>
+				<div class=" col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={blueTeamChampionImages[3]} qImage={blueTeamQImages[3]} wImage={blueTeamWImages[3]} eImage={blueTeamEImages[3]} rImage={blueTeamRImages[3]}/>
 				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[4]} qImage={qImages[4]} wImage={wImages[4]} eImage={eImages[4]} rImage={rImages[4]}/>
+				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={blueTeamChampionImages[4]} qImage={blueTeamQImages[4]} wImage={blueTeamWImages[4]} eImage={blueTeamEImages[4]} rImage={blueTeamRImages[4]}/>
 				</div>
 
-			<div class="row justify-content-center">
 
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[5]} qImage={qImages[5]} wImage={wImages[5]} eImage={eImages[5]} rImage={rImages[5]}/>
-				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[6]} qImage={qImages[6]} wImage={wImages[6]} eImage={eImages[6]} rImage={rImages[6]}/>
-				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[7]} qImage={qImages[7]} wImage={wImages[7]} eImage={eImages[7]} rImage={rImages[7]}/>
-				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[8]} qImage={qImages[8]} wImage={wImages[8]} eImage={eImages[8]} rImage={rImages[8]}/>
-				</div>
-				<div class="gy-5 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={championImages[9]} qImage={qImages[9]} wImage={wImages[9]} eImage={eImages[9]} rImage={rImages[9]}/>
-				</div>
 			</div>
 
+			<div class="row justify-content-center">
 
-
+				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={redTeamChampionImages[0]} qImage={redTeamQImages[0]} wImage={redTeamWImages[0]} eImage={redTeamEImages[0]} rImage={redTeamRImages[0]}/>
+				</div>
+				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={redTeamChampionImages[1]} qImage={redTeamQImages[1]} wImage={redTeamWImages[1]} eImage={redTeamEImages[1]} rImage={redTeamRImages[1]}/>
+				</div>
+				<div class=" col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={redTeamChampionImages[2]} qImage={redTeamQImages[2]} wImage={redTeamWImages[2]} eImage={redTeamEImages[2]} rImage={redTeamRImages[2]}/>
+				</div>
+				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={redTeamChampionImages[3]} qImage={redTeamQImages[3]} wImage={redTeamWImages[3]} eImage={redTeamEImages[3]} rImage={redTeamRImages[3]}/>
+				</div>
+				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card championImage={redTeamChampionImages[4]} qImage={redTeamQImages[4]} wImage={redTeamWImages[4]} eImage={redTeamEImages[4]} rImage={redTeamRImages[4]}/>
+				</div>
 			</div>
 
 		</div>

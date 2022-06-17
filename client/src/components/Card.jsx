@@ -9,7 +9,7 @@ function Card(props) {
           <img className="img" src={props.championImage}/>
         </div>
         <div className="allTextDivs passiveTextDiv">
-          <p className="allTextBackgrounds" > This text can be made smaller and the space between lines can be made thinner.</p>
+          <p className="allTextBackgrounds" >nner.</p>
         </div>
 
 
