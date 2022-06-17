@@ -6,9 +6,9 @@ function Card(props) {
 
       <div className="allAbilityDivs passiveDiv">
         <div className="imgDiv">
-          <img className="img" src={props.championImage}/>
+          <img style={{borderStyle: "solid", borderColor: props.borderColor}} className="img" src={props.championImage}/>
         </div>
-        <div className="allTextDivs passiveTextDiv">
+        <div style={{borderStyle: "solid", borderColor: props.borderColor}} className="allTextDivs passiveTextDiv">
           <p className="allTextBackgrounds" >nner.</p>
         </div>
 
@@ -20,18 +20,18 @@ function Card(props) {
 
       <div className="allAbilityDivs qDiv">
         <div className="imgDiv">
-          <img className="img" src={props.qImage}/>
+          <img style={{borderStyle: "solid", borderColor: props.borderColor}} className="img" src={props.qImage}/>
         </div>
-        <div className="allTextDivs qTextDiv">
+        <div style={{borderStyle: "solid", borderColor: props.borderColor}} className="allTextDivs qTextDiv">
           <p className="allTextBackgrounds">testing</p>
         </div>
       </div>
 
       <div className="allAbilityDivs wDiv">
         <div className="imgDiv">
-          <img className="img" src={props.wImage}/>
+          <img style={{borderStyle: "solid", borderColor: props.borderColor}} className="img" src={props.wImage}/>
         </div>
-        <div className="allTextDivs wTextDiv">
+        <div style={{borderStyle: "solid", borderColor: props.borderColor}} className="allTextDivs wTextDiv">
           <p className="allTextBackgrounds">Testing.</p>
         </div>
 
@@ -39,9 +39,9 @@ function Card(props) {
 
       <div className="allAbilityDivs eDiv">
         <div className="imgDiv">
-          <img className="img" src={props.eImage}/>
+          <img style={{borderStyle: "solid", borderColor: props.borderColor}} className="img" src={props.eImage}/>
         </div>
-        <div className="allTextDivs eTextDiv">
+        <div style={{borderStyle: "solid", borderColor: props.borderColor}}  className="allTextDivs eTextDiv">
           <p className="allTextBackgrounds">Testing.</p>
         </div>
 
@@ -49,9 +49,9 @@ function Card(props) {
 
       <div className="allAbilityDivs rDiv">
         <div className="imgDiv">
-          <img className="img" src={props.rImage}/>
+          <img style={{borderStyle: "solid", borderColor: props.borderColor}} className="img" src={props.rImage}/>
         </div>
-        <div className="allTextDivs rTextDiv">
+        <div style={{borderStyle: "solid", borderColor: props.borderColor}} className="allTextDivs rTextDiv">
           <p className="allTextBackgrounds">Testing.</p>
         </div>
 

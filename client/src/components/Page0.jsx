@@ -256,20 +256,20 @@ function Page0(){
 			<div  class="row justify-content-center">
 
 
-				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={blueTeamChampionImages[0]} qImage={blueTeamQImages[0]} wImage={blueTeamWImages[0]} eImage={blueTeamEImages[0]} rImage={blueTeamRImages[0]}/>
+				<div class=" g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="blue" championImage={blueTeamChampionImages[0]} qImage={blueTeamQImages[0]} wImage={blueTeamWImages[0]} eImage={blueTeamEImages[0]} rImage={blueTeamRImages[0]}/>
 				</div>
-				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={blueTeamChampionImages[1]} qImage={blueTeamQImages[1]} wImage={blueTeamWImages[1]} eImage={blueTeamEImages[1]} rImage={blueTeamRImages[1]}/>
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="blue" championImage={blueTeamChampionImages[1]} qImage={blueTeamQImages[1]} wImage={blueTeamWImages[1]} eImage={blueTeamEImages[1]} rImage={blueTeamRImages[1]}/>
 				</div>
-				<div class=" col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={blueTeamChampionImages[2]} qImage={blueTeamQImages[2]} wImage={blueTeamWImages[2]} eImage={blueTeamEImages[2]} rImage={blueTeamRImages[2]}/>
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="blue" championImage={blueTeamChampionImages[2]} qImage={blueTeamQImages[2]} wImage={blueTeamWImages[2]} eImage={blueTeamEImages[2]} rImage={blueTeamRImages[2]}/>
 				</div>
-				<div class=" col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={blueTeamChampionImages[3]} qImage={blueTeamQImages[3]} wImage={blueTeamWImages[3]} eImage={blueTeamEImages[3]} rImage={blueTeamRImages[3]}/>
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="blue" championImage={blueTeamChampionImages[3]} qImage={blueTeamQImages[3]} wImage={blueTeamWImages[3]} eImage={blueTeamEImages[3]} rImage={blueTeamRImages[3]}/>
 				</div>
-				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={blueTeamChampionImages[4]} qImage={blueTeamQImages[4]} wImage={blueTeamWImages[4]} eImage={blueTeamEImages[4]} rImage={blueTeamRImages[4]}/>
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="blue" championImage={blueTeamChampionImages[4]} qImage={blueTeamQImages[4]} wImage={blueTeamWImages[4]} eImage={blueTeamEImages[4]} rImage={blueTeamRImages[4]}/>
 				</div>
 
 
@@ -277,20 +277,20 @@ function Page0(){
 
 			<div class="row justify-content-center">
 
-				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={redTeamChampionImages[0]} qImage={redTeamQImages[0]} wImage={redTeamWImages[0]} eImage={redTeamEImages[0]} rImage={redTeamRImages[0]}/>
+				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="red" championImage={redTeamChampionImages[0]} qImage={redTeamQImages[0]} wImage={redTeamWImages[0]} eImage={redTeamEImages[0]} rImage={redTeamRImages[0]}/>
 				</div>
-				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={redTeamChampionImages[1]} qImage={redTeamQImages[1]} wImage={redTeamWImages[1]} eImage={redTeamEImages[1]} rImage={redTeamRImages[1]}/>
+				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="red" championImage={redTeamChampionImages[1]} qImage={redTeamQImages[1]} wImage={redTeamWImages[1]} eImage={redTeamEImages[1]} rImage={redTeamRImages[1]}/>
 				</div>
-				<div class=" col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={redTeamChampionImages[2]} qImage={redTeamQImages[2]} wImage={redTeamWImages[2]} eImage={redTeamEImages[2]} rImage={redTeamRImages[2]}/>
+				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="red" championImage={redTeamChampionImages[2]} qImage={redTeamQImages[2]} wImage={redTeamWImages[2]} eImage={redTeamEImages[2]} rImage={redTeamRImages[2]}/>
 				</div>
-				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={redTeamChampionImages[3]} qImage={redTeamQImages[3]} wImage={redTeamWImages[3]} eImage={redTeamEImages[3]} rImage={redTeamRImages[3]}/>
+				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="red" championImage={redTeamChampionImages[3]} qImage={redTeamQImages[3]} wImage={redTeamWImages[3]} eImage={redTeamEImages[3]} rImage={redTeamRImages[3]}/>
 				</div>
-				<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
-					<Card championImage={redTeamChampionImages[4]} qImage={redTeamQImages[4]} wImage={redTeamWImages[4]} eImage={redTeamEImages[4]} rImage={redTeamRImages[4]}/>
+				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+					<Card borderColor="red" championImage={redTeamChampionImages[4]} qImage={redTeamQImages[4]} wImage={redTeamWImages[4]} eImage={redTeamEImages[4]} rImage={redTeamRImages[4]}/>
 				</div>
 			</div>
 

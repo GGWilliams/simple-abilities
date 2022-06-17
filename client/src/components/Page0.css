@@ -1,7 +1,7 @@
 
 
 .input-group {
-  padding: 30px 10% 0px 10%
+  padding: 60px 10% 40px 10%
 }
 
 .row {
@@ -9,15 +9,17 @@
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 0px;
-  padding-bottom: 0px;
+  padding-bottom: 45px;
   margin-bottom: 0px;
-  padding-left: 5%;
-  padding-right: 5%
+  padding-left: 9%;
+  padding-right: 8%
 
 }
 
 .rowChild {
   height: 350px;
+  margin-bottom: 20px;
+
 }
 
 
