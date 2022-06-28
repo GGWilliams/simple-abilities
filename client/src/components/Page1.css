@@ -1,0 +1,12 @@
+#page1 {
+  background-image: url("https://nexus.leagueoflegends.com/wp-content/uploads/2019/09/WORLDS_Hero-Optimized_tet6rcp8js7lbk8ypf0d.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  height: 3840px;
+
+  /* height: 1550px;
+  overflow: auto; */
+}
