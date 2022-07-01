@@ -5,8 +5,26 @@
   background-position: center;
   background-size: cover;
 
-  height: 3840px;
+
+  height: 60rem;
+  overflow:
 
   /* height: 1550px;
   overflow: auto; */
+}
+
+#cardDiv {
+
+  width: 550px;
+  position: relative;
+  margin: auto;
+  height: 480px;
+  display: none;
+
+
+
+}
+
+.container {
+
 }

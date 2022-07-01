@@ -1,0 +1,168 @@
+@font-face {
+  src: url(../fonts/Friz-Quadrata-Bold.otf);
+  font-family: frizBold;
+  }
+
+@font-face {
+    src: url(../fonts/Friz-Quadrata-Italic.ttf);
+    font-family: friz-italic;
+  }
+
+@font-face {
+      src: url(../fonts/Friz-Quadrata-Regular.ttf);
+      font-family: friz-regular;
+    }
+
+@font-face {
+        src: url(../fonts/Friz-Quadrata-Std-Medium.otf);
+        font-family: friz-medium;
+      }
+
+.imageAndNameDiv{
+  text-align: center;
+}
+.namePlate {
+  width: 200px;
+  margin: auto;
+
+
+  background-color: black;
+  opacity: .7;
+
+  border-radius: 33px;
+}
+
+h4 {
+  font-family: friz-medium;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #b19360;
+  padding: 2px;
+
+
+}
+
+.cardDivParent {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+.cardDiv {
+  height: 90%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.allAbilityDivs {
+  margin-top: 5px;
+}
+
+.passiveDiv {
+  background-color: none;
+  height:20%;
+  width: 100%;
+
+
+}
+.qDiv {
+  background-color: none;
+  height: 20%;
+  width: 100%
+}
+.wDiv {
+  background-color: none;
+  height:20%;
+  width: 100%
+}
+.eDiv {
+  background-color: none;
+  height:20%;
+  width: 100%
+}
+.rDiv {
+  background-color: none;
+  height: 20%;
+  width: 100%
+}
+
+.imgDiv {
+  display: inline-block;
+  height: 100%;
+  background-color: none;
+  margin: 0px;
+  padding: 0px;
+
+}
+.championImage{
+  height: 90px;
+  display: inline-block;
+  border-radius: 50%;
+
+
+
+}
+
+.img {
+  display: inline-block;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 50%;
+}
+
+.qTextDiv {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;
+
+}
+.wTextDiv {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;
+
+}
+.eTextDiv {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;;
+
+}
+.rTextDiv {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;
+  height: 100%;
+
+
+}
+
+.allTextBackgrounds {
+  display: inline-block;
+  vertical-align:top;
+  padding: auto;
+  margin: 3px 9% 0px 9%;
+  font-family: friz-medium;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #b19360;
+}
+
+.passiveTextDiv {
+  display: inline-block;
+  width: 81%;
+  vertical-align: top;
+}
+
+.allTextDivs {
+  display: inline-block;
+  width: 80%;
+  vertical-align: top;
+  background-color: black;
+  opacity: .7;
+  height: 100%;
+  border-radius: 33px;
+}
