@@ -8,6 +8,7 @@ const axios = require("axios");
 function Page1() {
 
   const [searchText, setSearchText] = useState("");
+  const [championName, setChampionName] = useState("");
   const [championImage, setChampionImage] = useState("");
   const [qImage, setQImage]= useState("");
   const [wImage, setWImage]= useState("");
@@ -41,6 +42,7 @@ function Page1() {
             setRImage("https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[3].image.full);
             setPassiveImage("https://ddragon.leagueoflegends.com/cdn/12.11.1/img/passive/" + champ.passive.image.full);
             setChampionImage("https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" + searchText + ".png");
+            setChampionName(searchText);
 
 
 
@@ -57,6 +59,12 @@ function Page1() {
 					});
   }
 
+  function handleKeyPress(e){
+		if(e.key === "Enter"){
+			searchForChampion();
+		}
+	}
+
 
 
   return <div className="container g-0" id="page1">
@@ -66,11 +74,11 @@ function Page1() {
 
 
 		<div class="input-group mb-3">
-			<input onChange={handleChange} type="text" class="form-control" placeholder="Champion Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
+			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="form-control" placeholder="Champion Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
 			<button  onClick={event => searchForChampion(event)} class="btn btn-light btn-outline-secondary" type="button" id="button-addon2">Search</button>
 		</div>
     <div id="cardDiv">
-    <ChampionCard championName={searchText} championImage={championImage} qImage={qImage} wImage={wImage} eImage={eImage} rImage={rImage} passiveImage={passiveImage}/>
+    <ChampionCard championName={championName} championImage={championImage} qImage={qImage} wImage={wImage} eImage={eImage} rImage={rImage} passiveImage={passiveImage}/>
     </div>
 
 

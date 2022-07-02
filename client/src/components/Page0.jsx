@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Page0.css";
 import Card from "./Card";
+import SplitButton from "react-bootstrap/SplitButton";
+import Dropdown from "react-bootstrap/Dropdown"
 
 
 const axios = require("axios");
@@ -70,23 +72,24 @@ function Page0(){
 			}
 			championNamesArray.push(obj.name);
 
-					axios.get("https://ddragon.leagueoflegends.com/cdn/12.10.1/data/en_US/champion/" + obj.id + ".json") //obj.id is used because it is address friendly version of names like Kog 'Maw
+					axios.get("https://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/champion/" + obj.id + ".json") //obj.id is used because it is address friendly version of names like Kog 'Maw
 					.then(function (response) {
 						let champ = eval("response.data.data." + obj.id)
 						console.log(champ.spells[0].image.full);
 
 						if(championTeam === 100){
-							setBlueTeamQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[0].image.full]);
-							setBlueTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[1].image.full]);
-							setBlueTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[2].image.full]);
-							setBlueTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[3].image.full]);
-							setBlueTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" + obj.id + ".png"]);
+							setBlueTeamQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[0].image.full]);
+							setBlueTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[1].image.full]);
+							setBlueTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[2].image.full]);
+							setBlueTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[3].image.full]);
+							setBlueTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/" + obj.id + ".png"]);
+							console.log("Champion obj.id = " + obj.id)
 						}else{
-							setRedTeamQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[0].image.full]);
-							setRedTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[1].image.full]);
-							setRedTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[2].image.full]);
-							setRedTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/spell/" + champ.spells[3].image.full])
-							setRedTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" + obj.id + ".png"]);
+							setRedTeamQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[0].image.full]);
+							setRedTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[1].image.full]);
+							setRedTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[2].image.full]);
+							setRedTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[3].image.full]);
+							setRedTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/" + obj.id + ".png"]);
 						}
 
 					})
@@ -191,7 +194,7 @@ function Page0(){
 											console.log(redTeamNamesArray);
 
 											setChampionKeys(championKeysArray);
-
+											document.getElementById("liveAbilities").style.display="block";
 											}
 
 
@@ -211,7 +214,7 @@ function Page0(){
 											console.log(error);
 										})
 										.then(function () {
-											document.getElementById("liveAbilities").style.display="inline";
+
 										});
 
 		})
@@ -235,10 +238,21 @@ function Page0(){
 		}
 	}
 
+	// <div class="input-group mb-3">
+	//   <button class="btn btn-outline-secondary" type="button">Button</button>
+	//   <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+	//     <option selected>Choose...</option>
+	//     <option value="1">One</option>
+	//     <option value="2">Two</option>
+	//     <option value="3">Three</option>
+	//   </select>
+	// </div>
 
+	const [regionTitle, setRegionTitle] = useState("NA");
+	function changeRegion(event){
+		setRegionTitle(event.target.attributes.name.value);
 
-
-
+	}
 
 	return <div className="container g-0" id="page0">
 
@@ -248,6 +262,16 @@ function Page0(){
 
 
 		<div class="input-group mb-3">
+				<SplitButton
+				className="regionButton"
+				variant="outline-secondary"
+				title={regionTitle}
+				id="segmented-button-dropdown-1"
+			>
+				<Dropdown.Item name="NA" onClick={changeRegion} href="#">North America</Dropdown.Item>
+				<Dropdown.Item name="KR" onClick={changeRegion} href="#">Korea</Dropdown.Item>
+
+			</SplitButton>
 			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
 			<button onClick={event => searchForPlayer(event)} class="btn btn-light btn-outline-secondary" type="button" id="button-addon2">Search</button>
 		</div>
@@ -258,19 +282,19 @@ function Page0(){
 			<div  class="row justify-content-center">
 
 
-				<div class=" g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class=" g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[0]} qImage={blueTeamQImages[0]} wImage={blueTeamWImages[0]} eImage={blueTeamEImages[0]} rImage={blueTeamRImages[0]}/>
 				</div>
-				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[1]} qImage={blueTeamQImages[1]} wImage={blueTeamWImages[1]} eImage={blueTeamEImages[1]} rImage={blueTeamRImages[1]}/>
 				</div>
-				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[2]} qImage={blueTeamQImages[2]} wImage={blueTeamWImages[2]} eImage={blueTeamEImages[2]} rImage={blueTeamRImages[2]}/>
 				</div>
-				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[3]} qImage={blueTeamQImages[3]} wImage={blueTeamWImages[3]} eImage={blueTeamEImages[3]} rImage={blueTeamRImages[3]}/>
 				</div>
-				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[4]} qImage={blueTeamQImages[4]} wImage={blueTeamWImages[4]} eImage={blueTeamEImages[4]} rImage={blueTeamRImages[4]}/>
 				</div>
 
@@ -279,19 +303,19 @@ function Page0(){
 
 			<div class="row justify-content-center">
 
-				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[0]} qImage={redTeamQImages[0]} wImage={redTeamWImages[0]} eImage={redTeamEImages[0]} rImage={redTeamRImages[0]}/>
 				</div>
-				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[1]} qImage={redTeamQImages[1]} wImage={redTeamWImages[1]} eImage={redTeamEImages[1]} rImage={redTeamRImages[1]}/>
 				</div>
-				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[2]} qImage={redTeamQImages[2]} wImage={redTeamWImages[2]} eImage={redTeamEImages[2]} rImage={redTeamRImages[2]}/>
 				</div>
-				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[3]} qImage={redTeamQImages[3]} wImage={redTeamWImages[3]} eImage={redTeamEImages[3]} rImage={redTeamRImages[3]}/>
 				</div>
-				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-9 col-9 rowChild">
+				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
 					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[4]} qImage={redTeamQImages[4]} wImage={redTeamWImages[4]} eImage={redTeamEImages[4]} rImage={redTeamRImages[4]}/>
 				</div>
 			</div>
