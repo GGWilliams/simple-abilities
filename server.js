@@ -22,9 +22,12 @@ if (process.env.NODE_ENV === "production") {
 
 
 app.get("/summonerName/:summonerName", (req, res) => {
-  const searchText = req.params.summonerName;
-  
-  axios.get("https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + searchText + "?api_key=" + process.env.TOP_SECRET_API_KEY)
+  const userRequest = req.params.summonerName;
+  const region = userRequest.substring(0, 3).toLowerCase().replace("_", "");
+  const searchText = userRequest.substring(4);
+  console.log("Your searchText is: " + searchText + " Your region is: " + region);
+
+  axios.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + searchText + "?api_key=" + process.env.TOP_SECRET_API_KEY)
   .then(function (response) {
     res.json(response.data);
     console.log(response.data);
@@ -40,8 +43,11 @@ app.get("/summonerName/:summonerName", (req, res) => {
 })
 
 app.get("/by-summoner/:encryptedSummonerId", (req, res) => {
-  const encryptedSummonerId = req.params.encryptedSummonerId;
-  axios.get("https://kr.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + encryptedSummonerId + "?api_key=" + process.env.TOP_SECRET_API_KEY)
+  const userRequest = req.params.encryptedSummonerId;
+  const encryptedSummonerId = userRequest.substring(4);
+  const region = userRequest.substring(0, 3).toLowerCase().replace("_", "");
+
+  axios.get("https://" + region + ".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + encryptedSummonerId + "?api_key=" + process.env.TOP_SECRET_API_KEY)
   .then(function (responseById) {
     res.json(responseById.data);
     console.log("We just sent the res.json");

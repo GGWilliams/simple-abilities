@@ -154,11 +154,11 @@ function Page0(){
 
 		console.log("You searched for " + searchText);
 		setPlayerNameForErrorScreen(searchText);
-		axios.get("http://localhost:3001/summonerName/" + searchText)
+		axios.get("http://localhost:3001/summonerName/" + regionValue + searchText)
 		.then(function (response) {
-
+			console.log(response.data);
 			console.log("Id: " + response.data.id + " retrieved.");
-										axios.get("http://localhost:3001/by-summoner/" + response.data.id)
+										axios.get("http://localhost:3001/by-summoner/" + regionValue + response.data.id)
 										.then(function (responseById) {
 
 
@@ -249,8 +249,12 @@ function Page0(){
 	// </div>
 
 	const [regionTitle, setRegionTitle] = useState("NA");
+	const [regionValue, setRegionValue] = useState("na1");
 	function changeRegion(event){
 		setRegionTitle(event.target.attributes.name.value);
+		setRegionValue(event.target.attributes.value.value);
+		
+
 
 	}
 
@@ -268,8 +272,8 @@ function Page0(){
 				title={regionTitle}
 				id="segmented-button-dropdown-1"
 			>
-				<Dropdown.Item name="NA" onClick={changeRegion} href="#">North America</Dropdown.Item>
-				<Dropdown.Item name="KR" onClick={changeRegion} href="#">Korea</Dropdown.Item>
+				<Dropdown.Item value="na1_" name="NA" onClick={changeRegion} href="#">North America</Dropdown.Item>
+				<Dropdown.Item value="kr__" name="KR" onClick={changeRegion} href="#">Korea</Dropdown.Item>
 
 			</SplitButton>
 			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
