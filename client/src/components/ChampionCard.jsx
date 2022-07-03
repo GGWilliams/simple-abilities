@@ -5,7 +5,7 @@ function ChampionCard(props) {
   return <div className="cardDivParent">
   <div className="cardDiv">
       <div className="imageAndNameDiv" style={{textAlign: "center"}}>
-        <img style={{borderStyle: "solid", borderColor: props.borderColor}} className="championImage" src={props.championImage}/>
+        <img style={{borderStyle: "solid", borderColor: props.borderColor}} className="page1ChampionImage" src={props.championImage}/>
         <div className="namePlate">
         <h4>{props.championName}</h4>
         </div>

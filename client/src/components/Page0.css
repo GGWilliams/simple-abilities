@@ -23,7 +23,7 @@ input:focus {
 }
 
 .my-input-group {
-  padding: 60px 10% 40px 10%
+  padding: 20px 30% 0px 30% !important;
 }
 
 .row {
@@ -40,7 +40,8 @@ input:focus {
 
 .rowChild {
   height: 350px;
-  margin-bottom: 20px;
+  margin-bottom: 90px;
+
 
 }
 
@@ -83,6 +84,7 @@ input:focus {
   border-left-width: 0px;
   border-left-style: none;
   border-left-color: white;
+  background-color: #fbfcfd !important;
 
 }
 
@@ -110,7 +112,7 @@ input:focus {
   background-position: center;
   background-size: cover;
 
-  height: 3840px;
+  height: 6000px;
 
   /* height: 1550px;
   overflow: auto; */

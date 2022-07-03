@@ -30,12 +30,16 @@ function Page0(){
 	const [redTeamWImages, setRedTeamWImages] = useState([]);
 	const [redTeamEImages, setRedTeamEImages] = useState([]);
 	const [redTeamRImages, setRedTeamRImages] = useState([]);
+	const [redTeamPassiveImages, setRedTeamPassiveImages] = useState([]);
+	const [redTeamChampionNames, setRedTeamChampionNames] = useState([]);
 
 	const [blueTeamChampionImages, setBlueTeamChampionImages] = useState([]);
 	const [blueTeamQImages, setBlueTeamQImages] = useState([]);
 	const [blueTeamWImages, setBlueTeamWImages] = useState([]);
 	const [blueTeamEImages, setBlueTeamEImages] = useState([]);
 	const [blueTeamRImages, setBlueTeamRImages] = useState([]);
+	const [blueTeamPassiveImages, setBlueTeamPassiveImages] = useState([]);
+	const [blueTeamChampionNames, setBlueTeamChampionNames] = useState([]);
 
 
 
@@ -77,6 +81,7 @@ function Page0(){
 					axios.get("https://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/champion/" + obj.id + ".json") //obj.id is used because it is address friendly version of names like Kog 'Maw
 					.then(function (response) {
 						let champ = eval("response.data.data." + obj.id)
+						console.log(champ);
 						console.log(champ.spells[0].image.full);
 
 						if(championTeam === 100){
@@ -84,14 +89,19 @@ function Page0(){
 							setBlueTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[1].image.full]);
 							setBlueTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[2].image.full]);
 							setBlueTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[3].image.full]);
+							setBlueTeamPassiveImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/passive/" + champ.passive.image.full]);
+
 							setBlueTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/" + obj.id + ".png"]);
+							setBlueTeamChampionNames(oldArray => [...oldArray, obj.name])
 							console.log("Champion obj.id = " + obj.id)
 						}else{
 							setRedTeamQImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[0].image.full]);
 							setRedTeamWImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[1].image.full]);
 							setRedTeamEImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[2].image.full]);
 							setRedTeamRImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/spell/" + champ.spells[3].image.full]);
+							setRedTeamPassiveImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/passive/" + champ.passive.image.full]);
 							setRedTeamChampionImages(oldArray => [...oldArray, "https://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/" + obj.id + ".png"]);
+							setRedTeamChampionNames(oldArray => [...oldArray, obj.name])
 						}
 
 					})
@@ -100,7 +110,7 @@ function Page0(){
 						console.log(error);
 					})
 					.then(function () {
-						// always executed
+
 					});
 
 			// console.log(qName);
@@ -175,10 +185,14 @@ function Page0(){
 
 												setBlueTeamChampionImages([]);
 												setRedTeamChampionImages([]);
+												setBlueTeamChampionNames([]);
+												setRedTeamChampionNames([]);
 												setQImages([]);
 												setWImages([]);
 												setEImages([]);
 												setRImages([]);
+												setRedTeamPassiveImages([]);
+												setBlueTeamPassiveImages([]);
 
 												setChampionKeys([]);
 
@@ -291,19 +305,19 @@ function Page0(){
 
 
 				<div class=" g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[0]} qImage={blueTeamQImages[0]} wImage={blueTeamWImages[0]} eImage={blueTeamEImages[0]} rImage={blueTeamRImages[0]}/>
+					<Card championName={blueTeamChampionNames[0]} borderColor={blueTeamBorder} championImage={blueTeamChampionImages[0]} qImage={blueTeamQImages[0]} wImage={blueTeamWImages[0]} eImage={blueTeamEImages[0]} rImage={blueTeamRImages[0] } passiveImage={blueTeamPassiveImages[0]}/>
 				</div>
 				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[1]} qImage={blueTeamQImages[1]} wImage={blueTeamWImages[1]} eImage={blueTeamEImages[1]} rImage={blueTeamRImages[1]}/>
+					<Card championName={blueTeamChampionNames[1]} borderColor={blueTeamBorder} championImage={blueTeamChampionImages[1]} qImage={blueTeamQImages[1]} wImage={blueTeamWImages[1]} eImage={blueTeamEImages[1]} rImage={blueTeamRImages[1]} passiveImage={blueTeamPassiveImages[1]}/>
 				</div>
 				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[2]} qImage={blueTeamQImages[2]} wImage={blueTeamWImages[2]} eImage={blueTeamEImages[2]} rImage={blueTeamRImages[2]}/>
+					<Card championName={blueTeamChampionNames[2]} borderColor={blueTeamBorder} championImage={blueTeamChampionImages[2]} qImage={blueTeamQImages[2]} wImage={blueTeamWImages[2]} eImage={blueTeamEImages[2]} rImage={blueTeamRImages[2]} passiveImage={blueTeamPassiveImages[2]}/>
 				</div>
 				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[3]} qImage={blueTeamQImages[3]} wImage={blueTeamWImages[3]} eImage={blueTeamEImages[3]} rImage={blueTeamRImages[3]}/>
+					<Card championName={blueTeamChampionNames[3]} borderColor={blueTeamBorder} championImage={blueTeamChampionImages[3]} qImage={blueTeamQImages[3]} wImage={blueTeamWImages[3]} eImage={blueTeamEImages[3]} rImage={blueTeamRImages[3]} passiveImage={blueTeamPassiveImages[3]}/>
 				</div>
 				<div class=" g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={blueTeamBorder} championImage={blueTeamChampionImages[4]} qImage={blueTeamQImages[4]} wImage={blueTeamWImages[4]} eImage={blueTeamEImages[4]} rImage={blueTeamRImages[4]}/>
+					<Card championName={blueTeamChampionNames[4]} borderColor={blueTeamBorder} championImage={blueTeamChampionImages[4]} qImage={blueTeamQImages[4]} wImage={blueTeamWImages[4]} eImage={blueTeamEImages[4]} rImage={blueTeamRImages[4]} passiveImage={blueTeamPassiveImages[4]}/>
 				</div>
 
 
@@ -312,19 +326,19 @@ function Page0(){
 			<div class="row justify-content-center">
 
 				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[0]} qImage={redTeamQImages[0]} wImage={redTeamWImages[0]} eImage={redTeamEImages[0]} rImage={redTeamRImages[0]}/>
+					<Card championName={redTeamChampionNames[0]} borderColor={redTeamBorder} championImage={redTeamChampionImages[0]} qImage={redTeamQImages[0]} wImage={redTeamWImages[0]} eImage={redTeamEImages[0]} rImage={redTeamRImages[0]} passiveImage={redTeamPassiveImages[0]}/>
 				</div>
 				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[1]} qImage={redTeamQImages[1]} wImage={redTeamWImages[1]} eImage={redTeamEImages[1]} rImage={redTeamRImages[1]}/>
+					<Card championName={redTeamChampionNames[1]} borderColor={redTeamBorder} championImage={redTeamChampionImages[1]} qImage={redTeamQImages[1]} wImage={redTeamWImages[1]} eImage={redTeamEImages[1]} rImage={redTeamRImages[1]} passiveImage={redTeamPassiveImages[1]}/>
 				</div>
 				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[2]} qImage={redTeamQImages[2]} wImage={redTeamWImages[2]} eImage={redTeamEImages[2]} rImage={redTeamRImages[2]}/>
+					<Card championName={redTeamChampionNames[2]} borderColor={redTeamBorder} championImage={redTeamChampionImages[2]} qImage={redTeamQImages[2]} wImage={redTeamWImages[2]} eImage={redTeamEImages[2]} rImage={redTeamRImages[2]} passiveImage={redTeamPassiveImages[2]}/>
 				</div>
 				<div class="g-0  col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[3]} qImage={redTeamQImages[3]} wImage={redTeamWImages[3]} eImage={redTeamEImages[3]} rImage={redTeamRImages[3]}/>
+					<Card championName={redTeamChampionNames[3]} borderColor={redTeamBorder} championImage={redTeamChampionImages[3]} qImage={redTeamQImages[3]} wImage={redTeamWImages[3]} eImage={redTeamEImages[3]} rImage={redTeamRImages[3]} passiveImage={redTeamPassiveImages[3]}/>
 				</div>
 				<div class="g-0 col-xxl-4 col-xl-4 col-lg-5 col-md-7 col-sm-9 col-9 rowChild">
-					<Card borderColor={redTeamBorder} championImage={redTeamChampionImages[4]} qImage={redTeamQImages[4]} wImage={redTeamWImages[4]} eImage={redTeamEImages[4]} rImage={redTeamRImages[4]}/>
+					<Card championName={redTeamChampionNames[4]} borderColor={redTeamBorder} championImage={redTeamChampionImages[4]} qImage={redTeamQImages[4]} wImage={redTeamWImages[4]} eImage={redTeamEImages[4]} rImage={redTeamRImages[4]} passiveImage={redTeamPassiveImages[4]}/>
 				</div>
 			</div>
 
