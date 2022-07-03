@@ -28,3 +28,45 @@
 .container {
 
 }
+
+.my-input-group {
+  padding: 60px 10% 40px 10%
+}
+
+.searchButton:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.searchButton:active {
+  background-color: silver !important;
+}
+
+.searchInput {
+
+  border-style: none !important;
+  border-right-color: silver !important;
+  border-right-style: solid !important;
+  border-right-width: 2px !important;
+  border-left-width: 0px;
+  border-left-style: none;
+  border-left-color: white;
+
+}
+
+input:focus {
+  /* border-color: #FF0000 !important; */
+  box-shadow: none !important;
+  outline: none !important;
+  border-left: none !important;
+  margin-right: 1px !important;
+
+  /* border-right-style: solid !important;
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+  border-left-color: silver !important;
+
+  border-right-width: 1px !important;
+  border-right-color: silver !important; */
+
+}

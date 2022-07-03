@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import "./Page0.css";
 import Card from "./Card";
 import SplitButton from "react-bootstrap/SplitButton";
-import Dropdown from "react-bootstrap/Dropdown"
+import Dropdown from "react-bootstrap/Dropdown";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
 
 
 const axios = require("axios");
@@ -253,7 +255,7 @@ function Page0(){
 	function changeRegion(event){
 		setRegionTitle(event.target.attributes.name.value);
 		setRegionValue(event.target.attributes.value.value);
-		
+
 
 
 	}
@@ -265,10 +267,10 @@ function Page0(){
 
 
 
-		<div class="input-group mb-3">
+		<InputGroup className="my-input-group mb-3">
 				<SplitButton
-				className="regionButton"
-				variant="outline-secondary"
+
+				variant="light regionButton"
 				title={regionTitle}
 				id="segmented-button-dropdown-1"
 			>
@@ -276,9 +278,11 @@ function Page0(){
 				<Dropdown.Item value="kr__" name="KR" onClick={changeRegion} href="#">Korea</Dropdown.Item>
 
 			</SplitButton>
-			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
-			<button onClick={event => searchForPlayer(event)} class="btn btn-light btn-outline-secondary" type="button" id="button-addon2">Search</button>
-		</div>
+			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="searchInput form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
+			<button onClick={event => searchForPlayer(event)} class="searchButton btn btn-light" type="button" id="button-addon2">Search</button>
+		</InputGroup>
+
+
 		<div id="errorNotFound">
 			<h1>{playerNameForErrorScreen} is not currently in a live game.</h1>
 		</div>
