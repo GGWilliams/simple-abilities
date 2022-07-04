@@ -15,6 +15,65 @@ function Page1() {
   const [eImage, setEImage]= useState("");
   const [rImage, setRImage]= useState("");
   const [passiveImage, setPassiveImage]= useState("");
+  const [everyChampionArray, setEveryChampionArray]= useState([]);
+  const arrayOfChampions = [];
+
+  function createEveryChampionArray(){
+    axios.get("http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/champion.json")
+					.then(function (response) {
+
+            let entries = Object.entries(response.data.data);
+
+
+
+            for(let i = 0; i < entries.length; i++){
+              let championEntry = entries[i][0];
+              setEveryChampionArray(oldArray => [...oldArray, championEntry]);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					})
+					.catch(function (error) {
+						// handle error
+
+					})
+					.then(function () {
+						// always executed
+
+
+					});
+
+  }
+
+useEffect(()=>{
+createEveryChampionArray();
+
+}, []);
+
+useEffect(()=>{
+
+console.log(everyChampionArray);
+}, [everyChampionArray]);
+
+
+
+
+
+
 
   function handleKeyPress(e){
 		if(e.key === "Enter"){
@@ -23,7 +82,8 @@ function Page1() {
 	}
 
   function handleChange(e){
-		setSearchText(e.target.value)
+		setSearchText(e.target.value);
+
 
 	}
 
@@ -65,6 +125,11 @@ function Page1() {
 		}
 	}
 
+  //run fucntion on change to searchbar
+  //fucntion takes what is in search bar and creates html
+
+
+
 
 
   return <div className="container g-0" id="page1">
@@ -77,6 +142,14 @@ function Page1() {
 			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="searchInput form-control" placeholder="Champion Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
 			<button  onClick={event => searchForChampion(event)} class="searchButton  btn btn-light" type="button" id="button-addon2">Search</button>
 		</div>
+
+    <div>
+
+      {everyChampionArray.map(champion => <h1>{champion}</h1>)}
+
+      <input type="image" src="https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/Aatrox.png" name="saveForm" class="btTxt submit" id="saveForm" />
+    </div>
+
     <div className="page1CardDiv" id="cardDiv">
     <ChampionCard championName={championName} championImage={championImage} qImage={qImage} wImage={wImage} eImage={eImage} rImage={rImage} passiveImage={passiveImage}/>
     </div>
