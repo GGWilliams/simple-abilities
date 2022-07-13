@@ -8,7 +8,7 @@
 
 } */
 
-input:focus {
+.page0SearchInput:focus {
   /* border-color: #FF0000 !important; */
   box-shadow: none !important;
   outline: none !important;
@@ -23,7 +23,7 @@ input:focus {
 }
 
 .my-input-group {
-  padding: 20px 30% 0px 30% !important;
+  padding: 10px 30% 0px 30%;
 }
 
 .row {
@@ -35,6 +35,7 @@ input:focus {
   margin-bottom: 0px;
   padding-left: 9%;
   padding-right: 8%
+
 
 }
 

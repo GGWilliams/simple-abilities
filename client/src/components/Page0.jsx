@@ -51,6 +51,9 @@ function Page0(){
 
 	const [championKeys, setChampionKeys] = useState([]);
 
+	const [regionTitle, setRegionTitle] = useState("NA");
+	const [regionValue, setRegionValue] = useState("na1_");
+
 
 
 
@@ -158,6 +161,9 @@ function Page0(){
 	}
 
 	function searchForPlayer(event){
+		document.getElementById("logo").style.display="none";
+
+		document.getElementById("page0SearchID").style.paddingTop="20px";
 		document.getElementById("errorNotFound").style.display="none";
 		document.getElementById("liveAbilities").style.display="none";
 		document.getElementById("page0").style.height="3840px";
@@ -264,8 +270,7 @@ function Page0(){
 	//   </select>
 	// </div>
 
-	const [regionTitle, setRegionTitle] = useState("NA");
-	const [regionValue, setRegionValue] = useState("na1");
+
 	function changeRegion(event){
 		setRegionTitle(event.target.attributes.name.value);
 		setRegionValue(event.target.attributes.value.value);
@@ -279,9 +284,9 @@ function Page0(){
 
 
 
+		<div id="logo"><h1 className="logo">League Tools</h1></div>
 
-
-		<InputGroup className="my-input-group mb-3">
+		<InputGroup id="page0SearchID" className="my-input-group mb-3">
 				<SplitButton
 
 				variant="light regionButton"
@@ -292,9 +297,11 @@ function Page0(){
 				<Dropdown.Item value="kr__" name="KR" onClick={changeRegion} href="#">Korea</Dropdown.Item>
 
 			</SplitButton>
-			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="searchInput form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
+			<input onKeyPress={handleKeyPress} onChange={handleChange} type="text" class="page0SearchInput searchInput form-control" placeholder="Summoner Name..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
 			<button onClick={event => searchForPlayer(event)} class="searchButton btn btn-light" type="button" id="button-addon2">Search</button>
 		</InputGroup>
+
+
 
 
 		<div id="errorNotFound">

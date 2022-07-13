@@ -1,3 +1,22 @@
+@font-face {
+        src: url(../fonts/Friz-Quadrata-Std-Medium.otf);
+        font-family: friz-medium;
+      }
+@font-face {
+        src: url(../fonts/Friz-Quadrata-Bold.otf);
+        font-family: frizBold;
+        }
+
+@font-face {
+          src: url(../fonts/Friz-Quadrata-Italic.ttf);
+          font-family: friz-italic;
+        }
+
+@font-face {
+            src: url(../fonts/Friz-Quadrata-Regular.ttf);
+            font-family: friz-regular;
+          }
+
 #page1 {
   background-image: url("https://nexus.leagueoflegends.com/wp-content/uploads/2019/09/WORLDS_Hero-Optimized_tet6rcp8js7lbk8ypf0d.jpg");
   background-attachment: fixed;
@@ -5,13 +24,16 @@
   background-position: center;
   background-size: cover;
 
+  text-align: center;
 
-  height: 60rem;
-  overflow:
+  min-height: 60rem;
+  height: auto;
 
   /* height: 1550px;
   overflow: auto; */
 }
+
+
 
 #cardDiv {
 
@@ -24,13 +46,71 @@
 
 
 }
+#championSelectBackgroundDiv{
+
+
+
+  border-radius: 33px;
+  margin-left: 15%;
+  margin-right: 15%;
+  min-height: 430px;
+  height: auto;
+  margin-top: 10px;
+
+
+}
+
+.championSelectImageDiv {
+text-align: center;
+padding: 12px;
+
+
+
+}
+.championSelectImage {
+  display: inline;
+  height: 45px;
+  border-radius: 20%;
+
+}
 
 .container {
 
 }
 
-.my-input-group {
-  padding: 60px 25% 40px 25%;
+#logo {
+  text-align: center;
+  padding-top: 20%;
+  padding-bottom: 3px;
+  margin-bottom: 0px;
+  font-size: 44px;
+  font-family: frizBold;
+  color: rgba(255,255, 255);
+  text-shadow: 2px 2px 0px #000000; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+
+
+}
+
+.centerSizeSearch {
+  display: inline-block;
+  text-align: center;
+  width: 1200px;
+  min-width: 400px;
+  max-width: 40%;
+
+
+
+
+}
+
+.page1SearchBar {
+
+  text-align: center !important;
+
+  padding: 8px 0 0px 0 !important;
+
+
+
 }
 
 .searchButton:focus {
@@ -52,9 +132,11 @@
   border-left-style: none;
   border-left-color: white;
 
+
+
 }
 
-input:focus {
+.page1SearchInput:focus {
   /* border-color: #FF0000 !important; */
   box-shadow: none !important;
   outline: none !important;
